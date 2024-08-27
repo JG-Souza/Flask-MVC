@@ -1,1 +1,2 @@
-# Validação dos dados do formulario, ver a doc
+# Criar páginas para registro
+- Os registros estão sendo feitos diretamente pelo db browser, preciso criar um arota para registro
