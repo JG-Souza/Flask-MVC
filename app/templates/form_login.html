@@ -7,11 +7,11 @@
         {{ form.csrf_token }}
         <div class="form-group">
             <label>Username</label>
-            {{ form.username(class="form-control", placeholder="username") }}
+            {{ form.username(class="form-control", placeholder="Username") }}
         </div>
         <div class="form-group">
             <label>Password</label>
-            {{ form.password(class="form-control") }}
+            {{ form.password(class="form-control", placeholder="Password") }}
         </div>
         <div class="checkbox">
             <label>
@@ -20,7 +20,7 @@
         </div>
 
 
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 {% endblock %}

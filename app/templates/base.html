@@ -1,66 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/jumbotron/">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/jumbotron/">
 
-    <title>{% block title %}Toilter{% endblock %}</title>
+  <title>{% block title %}ZS Auth{% endblock %}</title>
 
-    
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="alert alert-warning"></div>
-                <ul class="flashes">
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Header section with navigation and project name -->
+    <div class="d-flex justify-content-between align-items-center py-3 mb-4 border-bottom">
+      <h3 class="text-muted">ZS Auth</h3>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link active" href="{{ url_for('home') }}">Home</a></li>
+          {% if not current_user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Cadastre-se</a></li>
+          {% endif %}
+          {% if current_user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('protected') }}">Protected</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+          {% else %}
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+          {% endif %}
+        </ul>
+      </nav>
     </div>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-
-  <body>
-
-    <div class="container">
-      <!-- Header section with navigation and project name -->
-      <div class="d-flex justify-content-between align-items-center py-3 mb-4 border-bottom">
-        <h3 class="text-muted">Project name</h3>
-        <nav>
-          <ul class="nav">
-            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-            {% if current_user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{{url_for('logout')}}">Logout</a></li>
-            {% else %}
-            <li class="nav-item"><a class="nav-link" href="{{url_for('login')}}">Login</a></li>
-            {% endif %}
-          </ul>
-        </nav>
-      </div>
-
-      {% block content %}
-      {% endblock %}
-
-      <!-- Footer section -->
-      <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-          <p class="m-0 text-center">&copy; 2016 Company, Inc.</p>
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="alert-container">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
         </div>
-      </footer>
+      {% endif %}
+    {% endwith %}
 
-    </div> <!-- /container -->
+    {% block content %}
+    {% endblock %}
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+    <!-- Footer section -->
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <p class="m-0 text-center">&copy;2024 Zenith Systems. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div> <!-- /container -->
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 </html>
+
+
+
 

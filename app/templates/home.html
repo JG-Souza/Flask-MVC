@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ super() }} - Home{% endblock %}
+
+
+{% block content %}
+<!-- Jumbotron section -->
+<div class="jumbotron p-5 mb-4 bg-light rounded-3 text-center">
+    <div class="container">
+      <h1 class="display-4">Zenith Systems</h1>
+      <p class="lead">Esta é uma empresa fictícia que tem o intuito de simular a responsabilidade pela criação de projetos. O criador da empresa e dos projetos é João Gabriel Souza, estudante de Sistemas de Informação na UFJF.</p>
+      
+    </div>
+  </div>
+
+  <!-- Marketing section -->
+  <div class="row">
+    <div class="col-lg-6">
+      <h4>GitHub</h4>
+      <a href="https://www.github.com/JG-Souza" style="text-decoration: none; color: #00bfff; margin-bottom: 20px; display: block;">
+        Clique aqui para visualizar outros repositórios assim como este.
+      </a>
+      
+      <h4>LinkedIn</h4>
+      <a href="https://www.linkedin.com/in/jg-souza" style="text-decoration: none; color: #00bfff; margin-bottom: 20px; display: block;">
+        Clique aqui para visualizar o perfil do criador no LinkedIn
+      </a>
+  
+      <h4>Para testes</h4>
+      <p>
+        A sugestão é que os usuários testem todas as funcionalidades da aplicação. No entanto, para fins de demonstração, há um usuário criado para visualizar a página que requer autenticação (apenas efetue o login):<br>
+        User: admin<br>
+        Password: admin
+      </p>
+    </div>
+  </div>
+  
+
+  {% endblock %}

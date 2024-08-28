@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Protected Page{% endblock %}
+
+{% block content %}
+<h2>Página Protegida</h2>
+<p>Essa página só pode ser acessada por usuário que estão logados.</p>
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <img src="{{ url_for('static', filename='gatinho.png') }}" alt="img">
+</div>
+
+{% endblock %}
