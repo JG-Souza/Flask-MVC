@@ -1,4 +1,3 @@
-# Todas as importações necessárias
 from flask import render_template, flash, redirect, url_for
 from app import app, db, lm
 from flask_login import login_user, logout_user, current_user, login_required
