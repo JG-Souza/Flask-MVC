@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "run.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "run.py"
+      }
+    ],
+    "env": {
+      "SECRET_KEY": "nescal",
+      "SQLALCHEMY_DATABASE_URI": "sqlite:///storage.db"
+    }
+  }
+  
+  
+  
